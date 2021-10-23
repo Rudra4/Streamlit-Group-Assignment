@@ -54,10 +54,13 @@ def cleanData():
             count+=1
         df1=df.drop(list1)
         df2=df1.reset_index()
+        del(df1)
         return (df2)
     dfr1 = outlier_remover(df, 'price')
     dfr2 = outlier_remover(dfr1, 'odometer')
+    del(dfr1)
     dfr3 = dfr2.loc[(dfr2['price'] >= 10000)]
+    del(dfr2)
     dfr3 = dfr3.iloc[:, 2:]
     return dfr3
 
